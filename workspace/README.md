@@ -45,7 +45,20 @@ This project showcases a complete MLOps workflow with:
 
 ## 🚀 Quick Start
 
-### Option 1: Automatic Setup (Recommended)
+### 🌐 Option 1: Run on Google Colab (Recommended - No Local Setup!)
+
+Click the badge to launch directly in Google Colab:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USER/REPO/blob/main/colab_notebook.ipynb)
+
+**What you get:**
+- ☁️ Cloud environment (no installation needed)
+- 🚀 Run the entire pipeline in your browser
+- 📊 Visualize results instantly
+- 🔧 Experiment with different models
+- 📥 Download artifacts to your computer
+
+### Option 2: Automatic Setup (Recommended for Local)
 
 ```bash
 # Clone the repository
@@ -63,7 +76,7 @@ pytest tests/ -v
 python train.py
 ```
 
-### Option 2: Step-by-Step Setup
+### Option 3: Step-by-Step Setup
 
 ```bash
 # 1. Clone repository
