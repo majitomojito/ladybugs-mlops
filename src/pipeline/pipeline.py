@@ -4,8 +4,8 @@ import logging
 from pathlib import Path
 from typing import Dict, Any
 
-import joblib
-import yaml
+import joblib # type: ignore
+import yaml # type: ignore
 
 from src.data import load_data, preprocess_data, save_data
 from src.models import train_model, evaluate_model, save_metrics
@@ -37,7 +37,7 @@ def load_config(config_path: str) -> Dict[str, Any]:
     return config
 
 
-def run_pipeline(config_path: str = "config/config.yaml") -> None:
+def run_pipeline(config_path: str = "config/config.yaml") -> Dict[Any, Any]:
     """
     Execute the complete ML pipeline.
     
