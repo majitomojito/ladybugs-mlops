@@ -1,0 +1,26 @@
+# MLOps Demo Project Configuration
+
+# Data settings
+data:
+  test_size: 0.2
+  random_state: 42
+
+# Model settings
+model:
+  random_state: 42
+  type: "random_forest"
+  params:
+    n_estimators: 100
+    max_depth: 10
+
+# Paths
+paths:
+  data: "data"
+  models: "models"
+  metrics: "models/metrics"
+  features: "data/features"
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
