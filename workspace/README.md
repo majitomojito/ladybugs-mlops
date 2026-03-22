@@ -12,7 +12,6 @@ This project showcases a complete MLOps workflow with:
 - **Model Training**: Train and evaluate ML models
 - **Experiment Tracking**: Store metrics and model artifacts
 - **CI/CD Automation**: Automated testing and retraining via GitHub Actions
-- **Containerization**: Docker support for reproducible environments
 - **Testing**: Unit tests for data and model pipelines
 - **Best Practices**: Configuration management, logging, and reproducibility
 
@@ -38,8 +37,6 @@ This project showcases a complete MLOps workflow with:
 │   └── test_pipeline.py
 ├── .github/workflows/        # CI/CD workflows
 │   └── train.yml             # Automated training pipeline
-├── Dockerfile                # Container configuration
-├── Makefile                  # Common commands
 ├── setup.sh                  # One-click setup script
 ├── train.py                  # Entry point
 ├── requirements.txt          # Python dependencies
@@ -87,33 +84,6 @@ pytest tests/ -v
 python train.py
 ```
 
-## 📦 Using the Makefile
-
-```bash
-make help              # Show all available commands
-make install           # Install dependencies
-make dev               # Install with development tools
-make test              # Run unit tests with coverage
-make train             # Run the ML pipeline
-make clean             # Remove generated artifacts
-make docker-build      # Build Docker image
-make docker-run        # Run pipeline in Docker
-make all               # Install, test, and train
-```
-
-## 🐳 Using Docker
-
-```bash
-# Build the Docker image
-docker build -t mlops-demo:latest .
-
-# Run pipeline in container
-docker run -v $(pwd)/models:/app/models -v $(pwd)/data:/app/data mlops-demo:latest
-
-# On Windows PowerShell
-docker run -v ${PWD}/models:/app/models -v ${PWD}/data:/app/data mlops-demo:latest
-```
-
 ## 📊 Pipeline Workflow
 
 The ML pipeline executes the following steps:
@@ -144,18 +114,6 @@ pytest tests/ -v
 # Run with coverage report
 pytest tests/ -v --cov=src --cov-report=html
 ```
-
-## 🔄 CI/CD Automation
-
-The GitHub Actions workflow automatically:
-
-- Runs on every push to `main` or `develop` branches
-- Executes on pull requests to `main`
-- Runs daily training pipeline (2 AM UTC)
-- Runs tests and generates coverage reports
-- Stores model artifacts as GitHub Actions artifacts
-
-View the workflow in `.github/workflows/train.yml`
 
 ## 📝 Configuration
 
@@ -189,7 +147,6 @@ After running this project, you'll understand:
 - ✅ Storing and versioning models
 - ✅ Automated testing for ML pipelines
 - ✅ CI/CD automation for model retraining
-- ✅ Containerization with Docker
 - ✅ Configuration management
 - ✅ Reproducibility and experiment tracking
 
@@ -256,8 +213,8 @@ def predict(features):
 ## 📚 Additional Resources
 
 - [Scikit-learn Documentation](https://scikit-learn.org/)
+- [Pytest Documentation](https://docs.pytest.org/)
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
-- [Docker Documentation](https://docs.docker.com/)
 - [MLflow Documentation](https://mlflow.org/)
 - [DVC (Data Version Control)](https://dvc.org/)
 
@@ -266,7 +223,6 @@ def predict(features):
 - Python 3.8+
 - pip or conda
 - ~500 MB disk space
-- (Optional) Docker for containerization
 
 ## 📄 License
 
@@ -295,14 +251,6 @@ chmod +x setup.sh
 Ensure Python 3.8+ is installed:
 ```bash
 python3 --version
-```
-
-### Docker permission denied
-
-On Linux, add your user to the docker group:
-```bash
-sudo usermod -aG docker $USER
-newgrp docker
 ```
 
 ---
