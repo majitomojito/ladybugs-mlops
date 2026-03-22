@@ -15,11 +15,19 @@ logger = logging.getLogger(__name__)
 
 def _ensure_logging_config() -> None:
     """Ensure logging is configured in caller environments."""
-    if not logging.getLogger().handlers:
-        logging.basicConfig(
-            level=logging.INFO,
-            format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    root_logger = logging.getLogger()
+    
+    # Only add handler if none exist
+    if not root_logger.handlers:
+        import sys
+        handler = logging.StreamHandler(sys.stdout)
+        handler.setLevel(logging.INFO)
+        formatter = logging.Formatter(
+            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
         )
+        handler.setFormatter(formatter)
+        root_logger.addHandler(handler)
+        root_logger.setLevel(logging.INFO)
 
 
 def load_config(config_path: str) -> Dict[str, Any]:
