@@ -13,6 +13,15 @@ from src.models import train_model, evaluate_model, save_metrics
 logger = logging.getLogger(__name__)
 
 
+def _ensure_logging_config() -> None:
+    """Ensure logging is configured in caller environments."""
+    if not logging.getLogger().handlers:
+        logging.basicConfig(
+            level=logging.INFO,
+            format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        )
+
+
 def load_config(config_path: str) -> Dict[str, Any]:
     """Load configuration from YAML file."""
     with open(config_path, "r") as f:
@@ -27,6 +36,7 @@ def run_pipeline(config_path: str = "config/config.yaml") -> None:
     Args:
         config_path: Path to configuration file
     """
+    _ensure_logging_config()
     logger.info("=" * 60)
     logger.info("Starting MLOps Pipeline")
     logger.info("=" * 60)
